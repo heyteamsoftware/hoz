@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import express from 'express';
 import session from 'express-session';
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
@@ -32,9 +31,14 @@ app.use(session({
 
 app.use(express.static('.'));
 
-// Admin credentials — set via environment variables
-const ADMIN_USER = process.env.ADMIN_USER || 'admin';
-const ADMIN_PASS = process.env.ADMIN_PASS;
+// Admin credentials — leídas de config.json (no se sube a GitHub)
+let ADMIN_USER = 'admin';
+let ADMIN_PASS = 'admin';
+try {
+  const cfg = JSON.parse(readFileSync('./config.json', 'utf-8'));
+  ADMIN_USER = cfg.ADMIN_USER || ADMIN_USER;
+  ADMIN_PASS = cfg.ADMIN_PASS || ADMIN_PASS;
+} catch (e) { /* config.json no encontrado, se usan valores por defecto */ }
 
 // File paths
 const contentFile = './content.json';
