@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import session from 'express-session';
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
@@ -31,9 +32,9 @@ app.use(session({
 
 app.use(express.static('.'));
 
-// Admin credentials (simple for single user)
-const ADMIN_USER = 'admin';
-const ADMIN_PASS = 'admin';
+// Admin credentials — set via environment variables
+const ADMIN_USER = process.env.ADMIN_USER || 'admin';
+const ADMIN_PASS = process.env.ADMIN_PASS;
 
 // File paths
 const contentFile = './content.json';
