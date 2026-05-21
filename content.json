@@ -1,0 +1,89 @@
+{
+  "hero": {
+    "eyebrow": "Santuario mariano · Desde el siglo XII",
+    "title": "Donde el agua<br/>esculpió la <em>piedra</em>.",
+    "subtitle": "En el corazón del Barranco de la Hoz, entre paredes rojizas labradas por el río Gallo, María en su advocación de la Hoz acoge al peregrino y al viajero desde hace casi nueve siglos."
+  },
+  "welcome": {
+    "eyebrow": "— Carta del rector",
+    "heading": "Bienvenidos al Santuario de nuestra Sra de la Hoz",
+    "paragraph1": "Esta pequeña ventana se abre sobre un Santuario mariano en la provincia de Guadalajara, dentro del Señorío de Molina de Aragón, en un marco natural incomparable conocido como el Barranco de la Hoz, moldeado por las aguas del río Gallo.",
+    "paragraph2": "Cuando uno se acerca por primera vez se asombra al ver las formaciones rocosas de tono rojizo. Pasando junto al <em>Huso</em>, una roca delgada y puntiaguda, nos acercamos a la ermita; nos sorprende entonces la <em>Rueca</em>, una enorme roca alzada frente al Santuario. Al levantar la vista, parece asomarse la <em>Cobertera</em>, una piedra que los lugareños conocen bien.",
+    "paragraph3": "El peregrino y visitante quedan sorprendidos de tal belleza al pasar el umbral de la puerta. Desde el siglo XII María en su advocación de la Hoz protege y guía a tantos que peregrinan buscando su amor y consuelo."
+  },
+  "barranco": {
+    "eyebrow": "— Parque Natural del Alto Tajo",
+    "heading": "El Barranco de la Hoz:<br/><em style=\"color: var(--clay);\">una joya geológica</em>.",
+    "description": "Un imponente cañón de tonos cobrizos y arenisca, resultado de 250 millones de años de erosión, originándose entre los periodos Pérmico y Triásico Inferior.",
+    "routes_heading": "Tres rutas para explorar el barranco",
+    "practica_heading": "Guía práctica para tu visita"
+  },
+  "ruta1": {
+    "title": "Ruta de los Miradores",
+    "description": "Ideal para vistas espectaculares con bajo nivel de exigencia. Arranca en la fuente de los tres caños, junto al Santuario, subiendo por escalones de piedra entre paredes rojizas.",
+    "stop1": "<strong>Mirador del Santuario</strong><p>A 10–15 min. Vista cenital del edificio encajado entre la roca.</p>",
+    "stop2": "<strong>Mirador de la Cueva</strong><p>Panorámica frontal del cañón y el río. Capas geológicas y cuevas naturales.</p>",
+    "stop3": "<strong>Mirador del Barranco</strong><p>El punto más elevado. Vista completa del cañón, pinares y río Gallo.</p>"
+  },
+  "ruta2": {
+    "title": "Ruta desde Corduente",
+    "description": "Llega a los miradores desde arriba, sin escaleras. Comienza en el Centro de Interpretación Dehesa de Corduente por una cómoda pista forestal rodeada de pinos y enebros. Perfecta para familias o personas con baja forma física."
+  },
+  "ruta3": {
+    "title": "Ruta Circular Corduente–Santuario",
+    "description": "El recorrido más completo. Fusiona los dos trayectos anteriores en una ruta circular que ofrece todas las perspectivas del barranco."
+  },
+  "practica": {
+    "llegar_eyebrow": "— Cómo llegar",
+    "llegar_intro": "Tanto desde Madrid (≈ 2 h) como desde Guadalajara (≈ 1,5 h) el camino es el mismo:",
+    "paso1": "Autovía <strong>A-2</strong>",
+    "paso2": "Sal en <strong>Alcolea del Pinar</strong> → Molina de Aragón",
+    "paso3": "4 km antes de Molina, toma la <strong>C-2015</strong> → Corduente",
+    "paso4": "Desvío <strong>GU-958</strong> → directo al Santuario",
+    "parking_eyebrow": "— Dónde aparcar",
+    "parking1": "<strong>Ruta Miradores:</strong> Parking gratuito junto al Santuario. En temporada alta, aparcamiento más grande a 30 metros en el área recreativa.",
+    "parking2": "<strong>Ruta Corduente / Circular:</strong> Centro de Interpretación Dehesa de Corduente.",
+    "acceso_eyebrow": "— Accesibilidad",
+    "acceso1": "La Ruta de los Miradores <strong>no es accesible</strong> para personas con movilidad reducida. Los escalones son irregulares y empinados.",
+    "acceso2": "Para movilidad limitada o baja forma física, se recomienda la <strong>ruta desde Corduente</strong> por pista forestal amplia y pendiente moderada."
+  },
+  "santuario": {
+    "eyebrow": "— El Santuario",
+    "heading": "Historia y Arquitectura",
+    "description": "Enclavado en pleno Parque Natural del Alto Tajo, a orillas del río Gallo y resguardado por el Barranco de la Hoz, este templo de Ventosa nació ligado a la leyenda de un pastor que descubrió aquí una talla de la Virgen.",
+    "feature1": "Misa diaria a las 12:30 h",
+    "feature2": "Ventosa, Guadalajara",
+    "feature3": "Románico del siglo XIII",
+    "feature4": "Entrada libre · Donativo voluntario"
+  },
+  "arq": {
+    "eyebrow": "— Estilo y construcción",
+    "heading": "Una joya del románico del siglo XIII",
+    "description": "Construido con <strong>piedra de sillería de gran calidad</strong> y muy bien tallada, el templo destaca por su excelente factura. Su cubierta consiste en una <strong>bóveda de cañón apuntado</strong> cuyo peso se distribuye gracias a seis sólidos contrafuertes que articulan los muros exteriores.",
+    "stat1": "<span class=\"san-stat-n\">XIII</span><span class=\"san-stat-l\">Siglo románico</span>",
+    "stat2": "<span class=\"san-stat-n\">6</span><span class=\"san-stat-l\">Contrafuertes</span>",
+    "stat3": "<span class=\"san-stat-n\">4</span><span class=\"san-stat-l\">Marcas de cantero</span>"
+  },
+  "planta": {
+    "eyebrow": "— Distribución de la planta",
+    "espacio1": "<strong>Pórtico Sur</strong><p class=\"body\" style=\"margin-top: 4px;\">Entrada principal. Arco de medio punto abocinado y adovelado, con arquivoltas sobre columnas y capiteles.</p>",
+    "espacio2": "<strong>Nave y Ábside</strong><p class=\"body\" style=\"margin-top: 4px;\">Una sola nave en cuatro tramos que culmina en ábside de cabecera plana. Arco apuntado al presbiterio sobre columnas adosadas con capiteles sencillos.</p>",
+    "espacio3": "<strong>Camarín de la Virgen</strong><p class=\"body\" style=\"margin-top: 4px;\">Tras el altar mayor, espacio donde se custodian diversas reliquias.</p>",
+    "espacio4": "<strong>Espadaña</strong><p class=\"body\" style=\"margin-top: 4px;\">Coronada sobre el ábside, con un único vano para la campana.</p>",
+    "espacio5": "<strong>Capillas de San Blas y San Antonio</strong><p class=\"body\" style=\"margin-top: 4px;\">Flanquean el pórtico sur a derecha e izquierda.</p>",
+    "espacio6": "<strong>Gruta de la Aparición</strong><p class=\"body\" style=\"margin-top: 4px;\">Frente a la entrada principal, lugar del descubrimiento de la talla de la Virgen.</p>",
+    "espacio7": "<strong>Coro, Capilla de la Reconciliación y Pórtico Suroeste</strong><p class=\"body\" style=\"margin-top: 4px;\">A los pies del templo, el coro elevado y la capilla con acceso directo desde el pórtico suroeste.</p>"
+  },
+  "cantero": {
+    "eyebrow": "— Curiosidad histórica",
+    "text": "Los expertos han identificado hasta <strong style=\"color: white;\">4 signos o marcas de cantero</strong> grabados en la piedra de los muros exteriores — huellas personales de los maestros constructores del siglo XIII que erigieron este templo."
+  },
+  "footer": {
+    "about": "Santuario mariano del Señorío de Molina de Aragón, en la diócesis de Sigüenza-Guadalajara. Un lugar de oración, peregrinación y descanso desde el siglo XII.",
+    "tel1": "949 848 224",
+    "tel2": "669 266 391",
+    "email": "info@virgendelahoz.es",
+    "direccion": "Ctra. Ventosa s/n<br/>19327 Ventosa, Guadalajara",
+    "link_colabora": "Colabora"
+  }
+}

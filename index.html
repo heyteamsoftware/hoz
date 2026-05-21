@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Santuario · Virgen de la Hoz</title>
+<meta name="description" content="Santuario mariano de Nuestra Señora de la Hoz en el Barranco de la Hoz, Parque Natural del Alto Tajo, Guadalajara." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script src="image-slot.js"></script>
+<script src="admin-edit.js"></script>
+</head>
+<body data-palette="terroso">
+
+<!-- ====================== LOGIN MODAL ====================== -->
+<div id="login-modal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 2000; display: none; align-items: center; justify-content: center;">
+  <div style="background: white; padding: 40px; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); width: 90%; max-width: 400px;">
+    <h2 style="margin-bottom: 24px; font-family: var(--serif);">Acceso Admin</h2>
+    <form id="login-form">
+      <div style="margin-bottom: 16px;">
+        <label style="display: block; margin-bottom: 8px; font-weight: 500;">Usuario</label>
+        <input type="text" id="login-user" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+      </div>
+      <div style="margin-bottom: 24px;">
+        <label style="display: block; margin-bottom: 8px; font-weight: 500;">Contraseña</label>
+        <input type="password" id="login-pass" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+      </div>
+      <button type="submit" style="width: 100%; padding: 12px; background: var(--clay); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">Entrar</button>
+    </form>
+  </div>
+</div>
+
+<!-- ====================== NAV ====================== -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="nav-brand">
+      <span class="nav-mark">H</span>
+      <div>
+        <div class="nav-title" data-i18n="brand_title">Virgen de la Hoz</div>
+        <div class="nav-title-sub" data-i18n="brand_sub">Santuario · Alto Tajo</div>
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <a href="#bienvenida" data-i18n="nav_welcome">Bienvenida</a>
+      <a href="#barranco" data-i18n="nav_barranco">El Barranco</a>
+      <a href="#santuario">El Santuario</a>
+      <a href="#contacto" data-i18n="nav_contact">Contacto</a>
+    </div>
+
+    <div style="display: flex; gap: 12px; align-items: center;">
+      <div class="lang" id="lang-switch">
+        <button data-lang="es" class="on">ES</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <button id="login-btn" style="padding: 8px 16px; background: var(--clay); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500;" aria-label="Login Admin">🔐 Admin</button>
+      <button class="nav-burger" aria-label="Menú"><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ====================== HERO ====================== -->
+<header class="hero" id="top">
+  <div class="hero-bg">
+    <image-slot id="hero-bg" placeholder="" shape="rect"></image-slot>
+  </div>
+
+  <div class="hero-content">
+    <div class="wrap">
+      <div class="eyebrow hero-eyebrow" data-editable="hero" data-field="eyebrow">
+        <span class="dot"></span><span>Santuario mariano · Desde el siglo XII</span>
+      </div>
+      <h1 class="display-xl hero-title" data-editable="hero" data-field="title" data-type="html">
+        Donde el agua<br/>esculpió la <em>piedra</em>.
+      </h1>
+      <p class="hero-sub" data-editable="hero" data-field="subtitle">
+        En el corazón del Barranco de la Hoz, entre paredes rojizas
+        labradas por el río Gallo, María en su advocación de la Hoz acoge
+        al peregrino y al viajero desde hace casi nueve siglos.
+      </p>
+      <div style="margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap;">
+        <a class="btn btn-light" href="#bienvenida"><span>Planifica tu visita</span> <span class="arr">→</span></a>
+        <a class="btn btn-line" href="#contacto">Contacto</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <div class="hero-foot-grid">
+      <div class="hero-foot-cell">
+        <div class="k" data-i18n="foot_loc">Ubicación</div>
+        <div class="v">Ventosa, Guadalajara<small data-i18n="foot_loc_x">Señorío de Molina de Aragón</small></div>
+      </div>
+      <div class="hero-foot-cell">
+        <div class="k" data-i18n="foot_park">Parque Natural</div>
+        <div class="v">Alto Tajo<small data-i18n="foot_park_x">Reserva de la Biosfera</small></div>
+      </div>
+      <div class="hero-foot-cell">
+        <div class="k" data-i18n="foot_open">Apertura</div>
+        <div class="v">Todo el año<small data-i18n="foot_open_x">Misa diaria · Acceso libre</small></div>
+      </div>
+      <div class="hero-foot-cell">
+        <div class="k" data-i18n="foot_tel">Contacto</div>
+        <div class="v">949 848 224<small>669 266 391</small></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ====================== BIENVENIDA ====================== -->
+<section class="welcome" id="bienvenida">
+  <div class="wrap">
+    <div class="welcome-grid">
+      <div class="welcome-card reveal">
+        <image-slot id="welcome-photo" placeholder="Imagen del Santuario · interior o exterior" shape="rect"></image-slot>
+        <div class="stamp">
+          <div class="yr"><small data-i18n="since">Desde</small>S. XII</div>
+        </div>
+      </div>
+
+      <div class="welcome-text reveal">
+        <div class="eyebrow" style="margin-bottom: 18px;" data-editable="welcome" data-field="eyebrow">— Carta del rector</div>
+        <h2 class="display-l" data-editable="welcome" data-field="heading">Bienvenidos al Santuario.</h2>
+
+        <p class="lead" data-editable="welcome" data-field="paragraph1">
+          Esta pequeña ventana se abre sobre un Santuario mariano en
+          la provincia de Guadalajara, dentro del Señorío de Molina
+          de Aragón, en un marco natural incomparable conocido como
+          el Barranco de la Hoz, moldeado por las aguas del río Gallo.
+        </p>
+
+        <p class="body" data-editable="welcome" data-field="paragraph2" data-type="html">
+          Cuando uno se acerca por primera vez se asombra al ver las
+          formaciones rocosas de tono rojizo. Pasando junto al
+          <em>Huso</em>, una roca delgada y puntiaguda, nos acercamos
+          a la ermita; nos sorprende entonces la <em>Rueca</em>, una
+          enorme roca alzada frente al Santuario. Al levantar la
+          vista, parece asomarse la <em>Cobertera</em>, una piedra
+          que los lugareños conocen bien.
+        </p>
+
+        <p class="body" data-editable="welcome" data-field="paragraph3">
+          El peregrino y visitante quedan sorprendidos de tal belleza
+          al pasar el umbral de la puerta. Desde el siglo XII María
+          en su advocación de la Hoz protege y guía a tantos que
+          peregrinan buscando su amor y consuelo.
+        </p>
+
+        <div class="signature">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--bg-paper); display: grid; place-items: center; font-family: var(--serif); font-size: 22px; color: var(--clay); font-style: italic;">
+</div>
+          <div>
+            <div class="signature-name">
+</div>
+            <div class="signature-role" data-i18n="rector">
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== EL BARRANCO ====================== -->
+<section class="barranco" id="barranco">
+  <div class="wrap">
+
+    <!-- Cabecera -->
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" data-editable="barranco" data-field="eyebrow">— Parque Natural del Alto Tajo</div>
+        <h2 class="display-l" style="margin-top: 12px; max-width: 22ch;" data-editable="barranco" data-field="heading" data-type="html">
+          El Barranco de la Hoz:<br/><em style="color: var(--clay);">una joya geológica</em>.
+        </h2>
+      </div>
+      <p class="body" style="max-width: 46ch;" data-editable="barranco" data-field="description">
+        Un imponente cañón de tonos cobrizos y arenisca, resultado de
+        250 millones de años de erosión, originándose entre los periodos
+        Pérmico y Triásico Inferior.
+      </p>
+    </div>
+
+    <!-- Foto principal -->
+    <div class="barranco-hero-img reveal">
+      <image-slot id="barranco-main" placeholder="Vista panorámica del Barranco de la Hoz" shape="rect"></image-slot>
+    </div>
+
+    <!-- Las 3 rutas -->
+    <div class="barranco-routes">
+      <h3 class="display-s" style="margin-bottom: 32px;" data-editable="barranco" data-field="routes_heading">Tres rutas para explorar el barranco</h3>
+
+      <div class="rocks-grid">
+
+        <!-- Ruta 1 -->
+        <article class="rock-card reveal">
+          <div class="rock-img">
+            <image-slot id="ruta-miradores" placeholder="Ruta de los Miradores · escalones de piedra" shape="rect"></image-slot>
+            <span class="rock-num">01 · LA MÁS POPULAR</span>
+          </div>
+          <div class="rock-body">
+            <h3 class="display-m" data-editable="ruta1" data-field="title">Ruta de los Miradores</h3>
+            <div class="route-stats">
+              <span>📏 1 km</span>
+              <span>⛰️ 125 m desnivel</span>
+              <span>🟢 Nivel bajo</span>
+            </div>
+            <p class="body" style="margin-top: 12px;" data-editable="ruta1" data-field="description">
+              Ideal para vistas espectaculares con bajo nivel de exigencia. Arranca en la fuente de los tres caños, junto al Santuario, subiendo por escalones de piedra entre paredes rojizas.
+            </p>
+            <div class="route-stops">
+              <div class="route-stop">
+                <span class="stop-dot"></span>
+                <div data-editable="ruta1" data-field="stop1" data-type="html">
+                  <strong>Mirador del Santuario</strong>
+                  <p>A 10–15 min. Vista cenital del edificio encajado entre la roca.</p>
+                </div>
+              </div>
+              <div class="route-stop">
+                <span class="stop-dot"></span>
+                <div data-editable="ruta1" data-field="stop2" data-type="html">
+                  <strong>Mirador de la Cueva</strong>
+                  <p>Panorámica frontal del cañón y el río. Capas geológicas y cuevas naturales.</p>
+                </div>
+              </div>
+              <div class="route-stop">
+                <span class="stop-dot"></span>
+                <div data-editable="ruta1" data-field="stop3" data-type="html">
+                  <strong>Mirador del Barranco</strong>
+                  <p>El punto más elevado. Vista completa del cañón, pinares y río Gallo.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ruta 2 -->
+        <article class="rock-card reveal">
+          <div class="rock-img">
+            <image-slot id="ruta-corduente" placeholder="Ruta desde Corduente · pista forestal" shape="rect"></image-slot>
+            <span class="rock-num">02 · IDEAL FAMILIAS</span>
+          </div>
+          <div class="rock-body">
+            <h3 class="display-m" data-editable="ruta2" data-field="title">Ruta desde Corduente</h3>
+            <div class="route-stats">
+              <span>📏 8 km ida y vuelta</span>
+              <span>⛰️ 100 m desnivel</span>
+              <span>🟢 Muy suave</span>
+            </div>
+            <p class="body" style="margin-top: 12px;" data-editable="ruta2" data-field="description">
+              Llega a los miradores desde arriba, sin escaleras. Comienza en el Centro de Interpretación Dehesa de Corduente por una cómoda pista forestal rodeada de pinos y enebros. Perfecta para familias o personas con baja forma física.
+            </p>
+          </div>
+        </article>
+
+        <!-- Ruta 3 -->
+        <article class="rock-card reveal">
+          <div class="rock-img">
+            <image-slot id="ruta-circular" placeholder="Ruta circular · aventureros" shape="rect"></image-slot>
+            <span class="rock-num">03 · PARA AVENTUREROS</span>
+          </div>
+          <div class="rock-body">
+            <h3 class="display-m" data-editable="ruta3" data-field="title">Ruta Circular Corduente–Santuario</h3>
+            <div class="route-stats">
+              <span>📏 10 km</span>
+              <span>⛰️ 255 m desnivel</span>
+              <span>🟡 Moderado</span>
+            </div>
+            <p class="body" style="margin-top: 12px;" data-editable="ruta3" data-field="description">
+              El recorrido más completo. Fusiona los dos trayectos anteriores en una ruta circular que ofrece todas las perspectivas del barranco.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Guía práctica -->
+    <div class="barranco-practical reveal">
+      <h3 class="display-s" style="margin-bottom: 32px;" data-editable="barranco" data-field="practica_heading">Guía práctica para tu visita</h3>
+
+      <div class="practical-grid">
+
+        <div class="practical-block">
+          <div class="eyebrow" style="margin-bottom: 14px;" data-editable="practica" data-field="llegar_eyebrow">— Cómo llegar</div>
+          <p class="body" data-editable="practica" data-field="llegar_intro">Tanto desde Madrid (≈ 2 h) como desde Guadalajara (≈ 1,5 h) el camino es el mismo:</p>
+          <ol class="route-steps">
+            <li data-editable="practica" data-field="paso1" data-type="html">Autovía <strong>A-2</strong></li>
+            <li data-editable="practica" data-field="paso2" data-type="html">Sal en <strong>Alcolea del Pinar</strong> → Molina de Aragón</li>
+            <li data-editable="practica" data-field="paso3" data-type="html">4 km antes de Molina, toma la <strong>C-2015</strong> → Corduente</li>
+            <li data-editable="practica" data-field="paso4" data-type="html">Desvío <strong>GU-958</strong> → directo al Santuario</li>
+          </ol>
+        </div>
+
+        <div class="practical-block">
+          <div class="eyebrow" style="margin-bottom: 14px;" data-editable="practica" data-field="parking_eyebrow">— Dónde aparcar</div>
+          <p class="body" data-editable="practica" data-field="parking1" data-type="html"><strong>Ruta Miradores:</strong> Parking gratuito junto al Santuario. En temporada alta, aparcamiento más grande a 30 metros en el área recreativa.</p>
+          <p class="body" style="margin-top: 10px;" data-editable="practica" data-field="parking2" data-type="html"><strong>Ruta Corduente / Circular:</strong> Centro de Interpretación Dehesa de Corduente.</p>
+        </div>
+
+        <div class="practical-block">
+          <div class="eyebrow" style="margin-bottom: 14px;" data-editable="practica" data-field="acceso_eyebrow">— Accesibilidad</div>
+          <p class="body" data-editable="practica" data-field="acceso1" data-type="html">La Ruta de los Miradores <strong>no es accesible</strong> para personas con movilidad reducida. Los escalones son irregulares y empinados.</p>
+          <p class="body" style="margin-top: 10px;" data-editable="practica" data-field="acceso2" data-type="html">Para movilidad limitada o baja forma física, se recomienda la <strong>ruta desde Corduente</strong> por pista forestal amplia y pendiente moderada.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====================== EL SANTUARIO ====================== -->
+<section class="santuario-sect" id="santuario">
+  <div class="wrap">
+
+    <!-- Intro: foto + texto -->
+    <div class="hosp-grid reveal" style="margin-bottom: clamp(64px, 8vw, 112px);">
+      <div class="hosp-img">
+        <image-slot id="santuario-photo" placeholder="El Santuario · vista exterior" shape="rect"></image-slot>
+      </div>
+      <div>
+        <div class="eyebrow" style="color: var(--ochre);" data-editable="santuario" data-field="eyebrow">— El Santuario</div>
+        <h2 class="display-l" style="margin-top: 16px;" data-editable="santuario" data-field="heading">
+          Historia y<br/><em>Arquitectura</em>.
+        </h2>
+        <p class="lead" data-editable="santuario" data-field="description">
+          Enclavado en pleno Parque Natural del Alto Tajo, a orillas del río Gallo y resguardado por el Barranco de la Hoz, este templo de Ventosa nació ligado a la leyenda de un pastor que descubrió aquí una talla de la Virgen.
+        </p>
+        <ul class="feats">
+          <li data-editable="santuario" data-field="feature1">Misa diaria a las 12:30 h</li>
+          <li data-editable="santuario" data-field="feature2">Ventosa, Guadalajara</li>
+          <li data-editable="santuario" data-field="feature3">Románico del siglo XIII</li>
+          <li data-editable="santuario" data-field="feature4">Entrada libre · Donativo voluntario</li>
+        </ul>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a class="btn btn-light" href="#contacto"><span>Contactar</span> <span class="arr">→</span></a>
+          <a class="btn btn-line" href="tel:949848224">Llamar: 949 848 224</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estilo arquitectónico -->
+    <div class="san-arch reveal">
+      <div class="san-arch-text">
+        <div class="eyebrow" style="margin-bottom: 14px;" data-editable="arq" data-field="eyebrow">— Estilo y construcción</div>
+        <h3 class="display-m" style="margin-bottom: 20px;" data-editable="arq" data-field="heading">Una joya del románico del siglo XIII</h3>
+        <p class="body" data-editable="arq" data-field="description" data-type="html">Construido con <strong>piedra de sillería de gran calidad</strong> y muy bien tallada, el templo destaca por su excelente factura. Su cubierta consiste en una <strong>bóveda de cañón apuntado</strong> cuyo peso se distribuye gracias a seis sólidos contrafuertes que articulan los muros exteriores.</p>
+      </div>
+      <div class="san-stats">
+        <div class="san-stat" data-editable="arq" data-field="stat1" data-type="html">
+          <span class="san-stat-n">XIII</span>
+          <span class="san-stat-l">Siglo románico</span>
+        </div>
+        <div class="san-stat" data-editable="arq" data-field="stat2" data-type="html">
+          <span class="san-stat-n">6</span>
+          <span class="san-stat-l">Contrafuertes</span>
+        </div>
+        <div class="san-stat" data-editable="arq" data-field="stat3" data-type="html">
+          <span class="san-stat-n">4</span>
+          <span class="san-stat-l">Marcas de cantero</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Planta y espacios interiores -->
+    <div class="san-plan reveal">
+      <div class="san-plan-img">
+        <image-slot id="santuario-planta" placeholder="Planta del templo · diagrama numerado" shape="rect"></image-slot>
+      </div>
+      <div class="san-spaces">
+        <div class="eyebrow" style="margin-bottom: 20px;" data-editable="planta" data-field="eyebrow">— Distribución de la planta</div>
+        <div class="san-space-list">
+
+          <div class="san-space">
+            <span class="san-space-num">1</span>
+            <div data-editable="planta" data-field="espacio1" data-type="html">
+              <strong>Pórtico Sur</strong>
+              <p class="body" style="margin-top: 4px;">Entrada principal. Arco de medio punto abocinado y adovelado, con arquivoltas sobre columnas y capiteles.</p>
+            </div>
+          </div>
+
+          <div class="san-space">
+            <span class="san-space-num">2–3</span>
+            <div data-editable="planta" data-field="espacio2" data-type="html">
+              <strong>Nave y Ábside</strong>
+              <p class="body" style="margin-top: 4px;">Una sola nave en cuatro tramos que culmina en ábside de cabecera plana. Arco apuntado al presbiterio sobre columnas adosadas con capiteles sencillos.</p>
+            </div>
+          </div>
+
+          <div class="san-space">
+            <span class="san-space-num">4</span>
+            <div data-editable="planta" data-field="espacio3" data-type="html">
+              <strong>Camarín de la Virgen</strong>
+              <p class="body" style="margin-top: 4px;">Tras el altar mayor, espacio donde se custodian diversas reliquias.</p>
+            </div>
+          </div>
+
+          <div class="san-space">
+            <span class="san-space-num">5</span>
+            <div data-editable="planta" data-field="espacio4" data-type="html">
+              <strong>Espadaña</strong>
+              <p class="body" style="margin-top: 4px;">Coronada sobre el ábside, con un único vano para la campana.</p>
+            </div>
+          </div>
+
+          <div class="san-space">
+            <span class="san-space-num">6 · 8</span>
+            <div data-editable="planta" data-field="espacio5" data-type="html">
+              <strong>Capillas de San Blas y San Antonio</strong>
+              <p class="body" style="margin-top: 4px;">Flanquean el pórtico sur a derecha e izquierda.</p>
+            </div>
+          </div>
+
+          <div class="san-space">
+            <span class="san-space-num">7</span>
+            <div data-editable="planta" data-field="espacio6" data-type="html">
+              <strong>Gruta de la Aparición</strong>
+              <p class="body" style="margin-top: 4px;">Frente a la entrada principal, lugar del descubrimiento de la talla de la Virgen.</p>
+            </div>
+          </div>
+
+          <div class="san-space">
+            <span class="san-space-num">9–11</span>
+            <div data-editable="planta" data-field="espacio7" data-type="html">
+              <strong>Coro, Capilla de la Reconciliación y Pórtico Suroeste</strong>
+              <p class="body" style="margin-top: 4px;">A los pies del templo, el coro elevado y la capilla con acceso directo desde el pórtico suroeste.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Curiosidad: marcas de cantero -->
+    <div class="san-cantero reveal">
+      <div class="san-cantero-inner">
+        <div class="eyebrow" style="margin-bottom: 12px; color: var(--clay);" data-editable="cantero" data-field="eyebrow">— Curiosidad histórica</div>
+        <p class="body" style="color: oklch(0.82 0.01 80);" data-editable="cantero" data-field="text" data-type="html">Los expertos han identificado hasta <strong style="color: white;">4 signos o marcas de cantero</strong> grabados en la piedra de los muros exteriores — huellas personales de los maestros constructores del siglo XIII que erigieron este templo.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====================== FOOTER ====================== -->
+<footer id="contacto">
+  <div class="wrap">
+    <div class="foot foot-grid">
+
+      <div class="foot-brand">
+        <div class="nav-brand">
+          <span class="nav-mark">H</span>
+          <div>
+            <div class="nav-title">Virgen de la Hoz</div>
+            <div class="nav-title-sub">Santuario · Alto Tajo</div>
+          </div>
+        </div>
+        <p data-editable="footer" data-field="about">
+          Santuario mariano del Señorío de Molina de Aragón,
+          en la diócesis de Sigüenza-Guadalajara. Un lugar
+          de oración, peregrinación y descanso desde el siglo XII.
+        </p>
+      </div>
+
+      <div>
+        <h4>Visita</h4>
+        <ul>
+          <li><a href="#bienvenida">Bienvenida</a></li>
+          <li><a href="#barranco">El Barranco</a></li>
+          <li><a href="#santuario">El Santuario</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Práctico</h4>
+        <ul>
+          <li><a href="#barranco">Cómo llegar</a></li>
+          <li><a href="#" data-editable="footer" data-field="link_colabora">Colabora</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li data-editable="footer" data-field="tel1">949 848 224</li>
+          <li data-editable="footer" data-field="tel2">669 266 391</li>
+          <li><a href="mailto:info@virgendelahoz.es" data-editable="footer" data-field="email">info@virgendelahoz.es</a></li>
+          <li style="margin-top: 8px; color: oklch(0.78 0.015 70); font-size: 13px;" data-editable="footer" data-field="direccion" data-type="html">
+            Ctra. Ventosa s/n<br/>19327 Ventosa, Guadalajara
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="foot-bottom">
+      <div>© 2026 Santuario de la Virgen de la Hoz · <span data-i18n="rights">Todos los derechos reservados</span></div>
+      <div style="display: flex; gap: 20px;">
+        <a href="#" data-i18n="legal">Aviso legal</a>
+        <a href="#" data-i18n="privacy">Privacidad</a>
+        <a href="#" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ====================== SCRIPTS ====================== -->
+<script>
+  // === I18N ===
+  const dict = {
+    es: {}, // already in DOM
+    en: {
+      brand_title: "Virgen de la Hoz",
+      brand_sub: "Sanctuary · Alto Tajo",
+      nav_welcome: "Welcome",
+      nav_barranco: "The Canyon",
+      nav_info: "Visit",
+      nav_events: "Calendar",
+      nav_hosp: "Lodging",
+      nav_contact: "Contact",
+
+      hero_eyebrow: "Marian sanctuary · Since the 12th century",
+      hero_title: 'Where water<br/>carved the <em>stone</em>.',
+      hero_sub: "Deep in the Barranco de la Hoz, between red sandstone walls shaped by the river Gallo, Mary in her advocation of la Hoz has welcomed pilgrims and travellers for nearly nine centuries.",
+      hero_cta1: "Plan your visit",
+      hero_cta2: "Book the lodging",
+
+      foot_loc: "Location",
+      foot_loc_x: "Lordship of Molina de Aragón",
+      foot_park: "Natural Park",
+      foot_park_x: "Biosphere Reserve",
+      foot_open: "Open",
+      foot_open_x: "Daily mass · Free entry",
+      foot_tel: "Contact",
+
+      since: "Since",
+      welcome_eyebrow: "— Letter from the rector",
+      welcome_h: "Welcome to the Sanctuary.",
+      welcome_p1: "A small window opens here onto a Marian sanctuary in the province of Guadalajara, within the Lordship of Molina de Aragón, set in an incomparable natural frame: the Barranco de la Hoz, shaped by the waters of the river Gallo.",
+      welcome_p2: "On first approach the reddish rock formations astonish the visitor. Passing the <em>Huso</em>, a thin and pointed stone, one nears the chapel; then the <em>Rueca</em>, an enormous rock, rises in front of the sanctuary. Looking up, the <em>Cobertera</em> seems to lean out — a stone the locals know well.",
+      welcome_p3: "Pilgrims and visitors are struck by such beauty as they cross the threshold. Since the 12th century, Mary in her advocation of la Hoz has protected and guided so many who come in search of her love and consolation.",
+      rector: "Rector of the Sanctuary",
+
+      rocks_eyebrow: "— The sacred landscape",
+      rocks_h: 'Three stones<br/>that tell<br/>a <em style="color: var(--clay);">story</em>.',
+      rocks_p: "Sandstones and conglomerates from a millennial past. The canyon hides three formations the locals named after household trades: the Spindle, the Distaff and the Lid.",
+      rock1_h: "The Spindle",
+      rock1_p: "Thin and pointed, it marks the entrance to the canyon. The first silhouette the pilgrim sees on entering, following the course of the river Gallo.",
+      rock2_h: "The Distaff",
+      rock2_p: "Massive and broad, it rises in front of the sanctuary. The Casa de la Hoz sits against its rock, beneath sandstone formations that speak of a millennial past.",
+      rock3_h: "The Lid",
+      rock3_p: "On reaching the plaza one looks up: it seems perilous because it juts out further than the rest. Locals named it for its lid-like shape, and it watches over the chapel.",
+
+      info1_k: "Daily mass",
+      info1_x: "Sundays & feast days",
+      info2_k: "How to get there",
+      info2_x: "From Ventosa, 4 km",
+      info3_k: "Lodging",
+      info3_v: "28 places",
+      info3_x: "Book in advance",
+      info4_k: "Entry",
+      info4_v: "Free",
+      info4_x: "Voluntary donation",
+
+      events_eyebrow: "— 2026 Calendar",
+      events_h: 'Upcoming <em style="color: var(--clay);">celebrations</em>.',
+      events_all: "Full calendar",
+      ev1_t: "Pilgrimage of Pentecost",
+      ev1_x: "Procession from Ventosa to the Sanctuary · 10:00",
+      ev1_p: "Sanctuary · Plaza and chapel",
+      ev2_t: "Assumption of the Virgin",
+      ev2_x: "Solemn mass · 12:30",
+      ev2_p: "Chapel of la Hoz",
+      ev3_t: "Nativity of Mary — Main feast",
+      ev3_x: "Eucharist, procession and blessing · full day",
+      ev3_p: "Sanctuary · Barranco de la Hoz",
+      ev4_t: "Marian brotherhoods gathering",
+      ev4_x: "Gathering · 11:00",
+      ev4_p: "Sanctuary and plaza",
+      ev_info: "Details →",
+
+      hosp_eyebrow: "— Sanctuary lodging",
+      hosp_h: "Sleep where<br/><em>silence</em> speaks.",
+      hosp_p1: "A simple, welcoming lodge at the foot of the canyon, designed for parish groups, spiritual retreats, and anyone seeking quiet and rest.",
+      hosp_f1: "28 places in single and double rooms",
+      hosp_f2: "Communal dining and kitchen",
+      hosp_f3: "Halls for retreats and meetings",
+      hosp_f4: "Chapel and garden",
+      hosp_f5: "Optional full board",
+      hosp_f6: "No pets allowed",
+      hosp_cta1: "Check availability",
+      hosp_cta2: "See facilities",
+
+      park_eyebrow: "— Alto Tajo Natural Park",
+      park_h: 'An <em>incomparable</em><br/>natural setting.',
+      park_p1: "The Sanctuary sits within the Alto Tajo Natural Park, in the Barranco de la Hoz. Trails, viewpoints and hiking paths connect the chapel with the surrounding landscape.",
+      park_p2: "The diocese is Sigüenza-Guadalajara, and the Sanctuary belongs to Ventosa, within the historic Lordship of Molina de Aragón.",
+      stat1: "Protected hectares",
+      stat2: "Documented origin",
+      stat3: "From Ventosa",
+
+      colab_eyebrow: "— Collaborate",
+      colab_h: "Help us sustain<br/>the Sanctuary.",
+      colab_p: "Keeping this place of prayer and welcome alive is possible thanks to the generosity of those who visit and of those who, unable to come, support its mission from afar.",
+      colab_cta1: "Make a donation",
+      colab_cta2: "Become a patron",
+
+      foot_about: "Marian sanctuary of the Lordship of Molina de Aragón, in the diocese of Sigüenza-Guadalajara. A place of prayer, pilgrimage and rest since the 12th century.",
+      foot_visit: "Visit",
+      foot_history: "History",
+      foot_traditions: "Traditions",
+      foot_practical: "Practical",
+      foot_directions: "How to get there",
+      foot_patron: "Patronage",
+      foot_colab: "Collaborate",
+      foot_contact: "Contact",
+      rights: "All rights reserved",
+      legal: "Legal notice",
+      privacy: "Privacy"
+    }
+  };
+
+  // Snapshot current Spanish DOM as 'es' dict
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    dict.es[el.dataset.i18n] = el.innerHTML;
+  });
+
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict[lang] && dict[lang][key]) el.innerHTML = dict[lang][key];
+    });
+    document.querySelectorAll('#lang-switch button').forEach(b => {
+      b.classList.toggle('on', b.dataset.lang === lang);
+    });
+    try { localStorage.setItem('hoz_lang', lang); } catch (e) {}
+  }
+  document.querySelectorAll('#lang-switch button').forEach(b => {
+    b.addEventListener('click', () => setLang(b.dataset.lang));
+  });
+  try {
+    const saved = localStorage.getItem('hoz_lang');
+    if (saved && saved !== 'es') setLang(saved);
+  } catch (e) {}
+
+  // === Reveal on scroll ===
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // === Smooth nav active highlight ===
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = [...navLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const navIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => navIo.observe(s));
+
+  // === Check admin status on page load ===
+  async function checkAdminStatus() {
+    try {
+      const response = await fetch('/api/me');
+      const data = await response.json();
+
+      if (data.isAdmin) {
+        // Ya está logueado, cambiar el botón
+        document.getElementById('login-btn').textContent = '✏️ Editar';
+      }
+    } catch (e) {
+      console.error('Connection error:', e);
+    }
+  }
+
+  // Verificar estado de admin al cargar
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', checkAdminStatus);
+  } else {
+    checkAdminStatus();
+  }
+
+  // === Login handler ===
+  document.getElementById('login-btn').addEventListener('click', () => {
+    document.getElementById('login-modal').style.display = 'flex';
+  });
+
+  document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = document.getElementById('login-user').value;
+    const password = document.getElementById('login-pass').value;
+
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+
+      if (response.ok) {
+        location.reload();
+      } else {
+        alert('Usuario o contraseña incorrectos');
+        document.getElementById('login-form').reset();
+      }
+    } catch (e) {
+      alert('Error al iniciar sesión');
+    }
+  });
+
+  // Load dynamic content — generic: handles any [data-editable] element
+  async function loadDynamicContent() {
+    try {
+      const response = await fetch('/api/content');
+      const content = await response.json();
+      document.querySelectorAll('[data-editable]').forEach(el => {
+        const key = el.getAttribute('data-editable');
+        const field = el.getAttribute('data-field');
+        const isHtml = el.getAttribute('data-type') === 'html';
+        if (content[key] && content[key][field] !== undefined) {
+          if (isHtml) el.innerHTML = content[key][field];
+          else el.textContent = content[key][field];
+        }
+      });
+    } catch (e) {
+      console.error('Failed to load dynamic content:', e);
+    }
+  }
+
+  // Load content on page load
+  loadDynamicContent();
+</script>
+
+</body>
+</html>
