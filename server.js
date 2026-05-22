@@ -31,14 +31,14 @@ app.use(session({
 
 app.use(express.static('.'));
 
-// Admin credentials — leídas de config.json (no se sube a GitHub)
-let ADMIN_USER = 'admin';
-let ADMIN_PASS = 'admin';
+// Admin credentials — variables de entorno (Render) o config.json (servidor propio)
+let ADMIN_USER = process.env.ADMIN_USER || 'admin';
+let ADMIN_PASS = process.env.ADMIN_PASS || 'admin';
 try {
   const cfg = JSON.parse(readFileSync('./config.json', 'utf-8'));
-  ADMIN_USER = cfg.ADMIN_USER || ADMIN_USER;
-  ADMIN_PASS = cfg.ADMIN_PASS || ADMIN_PASS;
-} catch (e) { /* config.json no encontrado, se usan valores por defecto */ }
+  if (cfg.ADMIN_USER) ADMIN_USER = cfg.ADMIN_USER;
+  if (cfg.ADMIN_PASS) ADMIN_PASS = cfg.ADMIN_PASS;
+} catch (e) { /* config.json no encontrado, se usan variables de entorno o defaults */ }
 
 // File paths
 const contentFile = './content.json';
