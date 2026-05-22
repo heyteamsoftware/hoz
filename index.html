@@ -58,12 +58,8 @@
     </div>
 
     <div style="display: flex; gap: 12px; align-items: center;">
-      <div class="lang" id="lang-switch">
-        <button data-lang="es" class="on">ES</button>
-        <button data-lang="en">EN</button>
-      </div>
       <button id="login-btn" style="padding: 8px 16px; background: var(--clay); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500;" aria-label="Login Admin">🔐 Admin</button>
-      <button class="nav-burger" aria-label="Menú"><span></span></button>
+      <button class="nav-burger" id="nav-burger" aria-label="Menú"><span></span></button>
     </div>
   </div>
 </nav>
@@ -506,9 +502,19 @@
 
 <!-- ====================== SCRIPTS ====================== -->
 <script>
-  // === I18N ===
+  // === Burger menu ===
+  const burgerBtn = document.getElementById('nav-burger');
+  const navLinksEl = document.querySelector('.nav-links');
+  burgerBtn.addEventListener('click', () => {
+    navLinksEl.classList.toggle('open');
+  });
+  navLinksEl.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinksEl.classList.remove('open'));
+  });
+
+  // === I18N (legacy, no-op) ===
   const dict = {
-    es: {}, // already in DOM
+    es: {},
     en: {
       brand_title: "Virgen de la Hoz",
       brand_sub: "Sanctuary · Alto Tajo",
