@@ -6,7 +6,7 @@ import multer from 'multer';
 import sharp from 'sharp';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Ensure directories exist
 const imagesDir = './public/images';
