@@ -1,4 +1,14 @@
 {
+  "herofoot": {
+    "loc_label": "Ubicación",
+    "loc_value": "Ventosa, Guadalajara<small>Señorío de Molina de Aragón</small>",
+    "park_label": "Parque Natural",
+    "park_value": "Alto Tajo<small>Reserva de la Biosfera</small>",
+    "open_label": "Apertura",
+    "open_value": "Todo el año<small>Misa diaria · Acceso libre</small>",
+    "tel_label": "Contacto",
+    "tel_value": "949 848 224<small>669 266 391</small>"
+  },
   "hero": {
     "eyebrow": "Santuario mariano · Desde el siglo XII",
     "title": "Donde el agua<br/>esculpió la <em>piedra</em>.",
