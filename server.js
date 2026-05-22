@@ -200,14 +200,5 @@ app.use((req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`
-╔════════════════════════════════════════╗
-║   Santuario de la Virgen de la Hoz     ║
-║   Servidor ejecutándose en:            ║
-║   http://localhost:${PORT}              ║
-║                                        ║
-║   Admin: usuario: admin                ║
-║          contraseña: admin             ║
-╚════════════════════════════════════════╝
-  `);
+  console.log(`Santuario de la Virgen de la Hoz · Puerto ${PORT} · Admin: ${ADMIN_USER}`);
 });
